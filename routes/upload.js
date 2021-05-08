@@ -13,17 +13,22 @@ router.get('/upload', function(req, res, next){
 // 画像をアップロードし、tempフォルダに追加
 router.post('/upload', function(req, res, next){
   // console.log(req.body);
+  var name = req.body.nickname ? req.body.nickname + '_' : '';
+  var now = new Date().getTime();
+  var t = Math.floor(Math.random() * 1000);
+  var filename = `${name}${String(now)}_${String(t)}`;
+
   var base64 = req.body.data.split(',')[1];
   var decode = new Buffer.from(base64, 'base64');
-  var t = Math.floor(Math.random() * 100);
-  fs.writeFile(`temp/${String(t)}.png`, decode, (err) => {
+
+  fs.writeFile(`temp/${filename}.png`, decode, (err) => {
     if(err){
       console.log(err);
     }else{
       console.log('saved');
     }
   });
-  res.send('{"filename":"'+t+'.png"}');
+  res.send('{"filename":"'+filename+'.png"}');
 });
 
 const basic = {username: "gakusei3", password: "fb3cf7ce60e83d199a6a9d10e277ca68b9bd28e2c81f7ee2ed2233bbb6f10958"}
