@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: gray;
 }
 
 a {
@@ -11,4 +12,8 @@ a {
   position: absolute;
   height: 100%;
   width: 100%; 
+}
+
+img{
+  border: solid 1px black;
 }
