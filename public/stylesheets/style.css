@@ -17,3 +17,24 @@ a {
 img{
   border: solid 1px black;
 }
+
+input[type='submit']{
+  margin: 5px;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.approve{
+  background-color: greenyellow;
+}
+.approve:hover{
+  opacity: 0.7;
+}
+
+.deny{
+  background-color: red;
+}
+.deny:hover{
+  opacity: 0.7;
+}

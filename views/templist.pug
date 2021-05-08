@@ -6,6 +6,6 @@ block content
     div
       img(src=`/temp/${e}` width='640' height='360')
       form(action=`/approval/${e}`, method='POST')
-        input(type='submit', value='承認')
+        input(type='submit', value='承認' class='approve')
       form(action=`/denial/${e}`, method='POST')
-        input(type='submit', value='拒否')
+        input(type='submit', value='拒否' class='deny')
