@@ -4,6 +4,7 @@ block content
   h1 承認画面
   each e in files
     div
+      div #{e}
       img(src=`/temp/${e}` width='640' height='360')
       form(action=`/approval/${e}`, method='POST')
         input(type='submit', value='承認' class='approve')
