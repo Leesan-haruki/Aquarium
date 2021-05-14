@@ -95,8 +95,45 @@ router.get('/uploadedList', function(req, res, next){
   })
 });
 
+/*
 router.get('/aquarium', function(req, res, next){
   res.render('aquarium');
+});
+*/
+
+
+// 承認済の画像一覧の表示、BASIC認証つき
+router.get('/fishList', function(req, res, next){
+  const auth = req.get('authorization');
+  if(!auth){
+    res.set("WWW-Authenticate","Basic realm=Admin only.");
+    res.sendStatus(401);
+    return;
+  }
+  let r = auth.match(/^Basic ([a-zA-Z0-9\+\/]*=*)$/);
+  if(!r){
+    res.set("WWW-Authenticate","Basic realm=Admin only.");
+    res.sendStatus(401);
+    return;
+  }
+  r = Buffer.from(r[1], "base64").toString("utf-8").match(/^([^:]+):(.+)$/);
+  if(!r){
+      res.set("WWW-Authenticate","Basic realm=Admin only.");
+      res.sendStatus(401);
+      return;
+  }
+  if(r[1] !== basic.username || crypto.createHash('sha256').update(r[2], 'utf8').digest('hex') !== basic.password){
+  // if(r[1] !== basic.username || r[2] !== basic.password){
+    res.set("WWW-Authenticate","Basic realm=Admin only.");
+    res.sendStatus(401);
+    return;
+  }
+  else{
+    fs.readdir('uploads', function(err, files){
+      if(err) throw err;
+      res.render('uploadlist', {files:files});
+    });
+  }
 });
 
 module.exports = router;

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 承認済画面
+  each e in files
+    div
+      div #{e}
+      img(src=`/uploads/${e}` width='640' height='360')
+      
