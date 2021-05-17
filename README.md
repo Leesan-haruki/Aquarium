@@ -16,7 +16,17 @@ Aquarium of oekaki
 4. パッケージを入れる
 - `npm i`を実行することでnode_modulesというディレクトリが作られ、いっぱいパッケージが入ります。ちょっと時間がかかります。
 - 多分警告とか出ると思うんですけどとりあえずスルーでOKです。
-5. 起動する
+5. config.jsファイルを作る
+- config.jsファイルを作成し、以下をコピペしてください。
+```
+module.exports = {
+  dev: true,
+  key: null,
+  crt: null
+}
+```
+- 本番環境の場合は、`dev`を`false`にして、`key`と`crt`に適切な場所を指定してください。
+7. 起動する
 - `npm run start`を実行してブラウザで`localhost:3000`にアクセスできたら成功です。
 
 ## ディレクトリ構成
