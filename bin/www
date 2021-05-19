@@ -29,7 +29,7 @@ if (config.dev) {
 else {
   var options = {
     key: fs.readFileSync(config.key),
-    crt: fs.readFileSync(config.crt)
+    cert: fs.readFileSync(config.crt)
   }
   var server = https.createServer(options, app);
 }
